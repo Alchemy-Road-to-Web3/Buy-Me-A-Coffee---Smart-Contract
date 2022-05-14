@@ -25,9 +25,19 @@ contract BuyMeACoffee {
 
     // Address of contract deployer
     address payable owner;
+    address payable withdrawToAddress;
+
+    modifier onlyOwner() {
+        require(
+            msg.sender == owner,
+            "Only the contract creator can call this function."
+        );
+        _; // run the function code
+    }
 
     constructor() {
         owner = payable(msg.sender);
+        withdrawToAddress = payable(msg.sender);
     }
 
     /**
@@ -52,7 +62,7 @@ contract BuyMeACoffee {
      * @dev send the entire balance stored in this contract to the owner
      */
     function withdrawTips() public {
-        require(owner.send(address(this).balance));
+        require(withdrawToAddress.send(address(this).balance));
     }
 
     /**
@@ -60,5 +70,19 @@ contract BuyMeACoffee {
      */
     function getMemos() public view returns (Memo[] memory) {
         return memos;
+    }
+
+    /**
+     * @dev update the withdraw to address
+     */
+    function updateWithdrawAddress(address _address) public onlyOwner {
+        withdrawToAddress = payable(_address);
+    }
+
+    /**
+     * @dev get withdraw to address
+     */
+    function getWithdrawAddress() public view onlyOwner returns (address) {
+        return withdrawToAddress;
     }
 }

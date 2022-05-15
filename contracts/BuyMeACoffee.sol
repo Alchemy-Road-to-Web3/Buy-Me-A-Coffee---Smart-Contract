@@ -24,7 +24,7 @@ contract BuyMeACoffee {
     Memo[] memos;
 
     // Address of contract deployer
-    address payable owner;
+    address owner;
     address payable withdrawToAddress;
 
     modifier onlyOwner() {
@@ -36,7 +36,7 @@ contract BuyMeACoffee {
     }
 
     constructor() {
-        owner = payable(msg.sender);
+        owner = msg.sender;
         withdrawToAddress = payable(msg.sender);
     }
 
@@ -70,5 +70,19 @@ contract BuyMeACoffee {
      */
     function getMemos() public view returns (Memo[] memory) {
         return memos;
+    }
+
+    /**
+     * @dev update the withdraw to address
+     */
+    function updateWithdrawAddress(address _address) public onlyOwner {
+        withdrawToAddress = payable(_address);
+    }
+
+    /**
+     * @dev get withdraw to address
+     */
+    function getWithdrawAddress() public view onlyOwner returns (address) {
+        return withdrawToAddress;
     }
 }

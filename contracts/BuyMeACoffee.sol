@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
-// Deployed to Rinkeby at 0xEbB551D8709318F481f354aAF1D536b4a9763D6c
+// Deployed to Rinkeby at 0x5FbDB2315678afecb367f032d93F642f64180aa3
 
 contract BuyMeACoffee {
     // Event to emit when a Memo is created
@@ -70,19 +70,5 @@ contract BuyMeACoffee {
      */
     function getMemos() public view returns (Memo[] memory) {
         return memos;
-    }
-
-    /**
-     * @dev update the withdraw to address
-     */
-    function updateWithdrawAddress(address _address) public onlyOwner {
-        withdrawToAddress = payable(_address);
-    }
-
-    /**
-     * @dev get withdraw to address
-     */
-    function getWithdrawAddress() public view onlyOwner returns (address) {
-        return withdrawToAddress;
     }
 }

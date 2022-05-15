@@ -64,6 +64,17 @@ async function main() {
   console.log("== All memos ==");
   const memos = await buyMeACoffee.connect(owner).getMemos();
   printMemos(memos);
+
+  // Get withdraw to address
+  console.log("== Withdraw to address ==");
+  let withdrawToAddress = await buyMeACoffee.getWithdrawAddress();
+  console.log(`Address: ${withdrawToAddress}`);
+
+  // Update withdraw to address
+  console.log("== Update withdraw to address ==");
+  await buyMeACoffee.updateWithdrawAddress("0x9b2c3D9578975CbC08d105C11E5b2895e05d3CfA");
+  withdrawToAddress = await buyMeACoffee.getWithdrawAddress();
+  console.log(`Address: ${withdrawToAddress}`);
 }
 
 main()

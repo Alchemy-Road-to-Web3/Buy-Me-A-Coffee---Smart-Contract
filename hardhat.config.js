@@ -3,6 +3,7 @@ require("@nomiclabs/hardhat-ethers");
 require("dotenv").config();
 
 const RINKEBY_URL = process.env.RINKEBY_URL;
+const GOERLI_URL = process.env.GOERLI_URL;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 /**
@@ -13,6 +14,10 @@ module.exports = {
   networks: {
     rinkeby: {
       url: RINKEBY_URL,
+      accounts: [PRIVATE_KEY],
+    },
+    goerli: {
+      url: GOERLI_URL,
       accounts: [PRIVATE_KEY],
     },
   },

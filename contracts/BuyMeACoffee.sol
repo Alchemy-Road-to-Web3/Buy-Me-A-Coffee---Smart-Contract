@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
-// Deployed to Rinkeby at 0x5FbDB2315678afecb367f032d93F642f64180aa3
+// Deployed to Rinkeby at 0x638066b07aCf4d8eE07C671103397bEe0986FBE6
 
 contract BuyMeACoffee {
     // Event to emit when a Memo is created
